@@ -177,31 +177,31 @@ export function About() {
 
 export function Education() {
   const items = [
-    { year: "2026", title: "B.Sc. Information Technology", place: "Patkar Varde College", note: "Graduating in 2026" },
-    { year: "2023", title: "Higher Secondary Education", place: "Thomas Baptista Jr. College", note: "Completed in 2023" },
-    { year: "2021", title: "Secondary School Education", place: "St. Xaviers High School", note: "Completed in 2021" },
+    { year: "2026", title: "B.Sc. Information Technology", place: "Patkar Varde College", note: "Graduating in 2026", icon: GraduationCap },
+    { year: "2023", title: "Higher Secondary Education", place: "Thomas Baptista Jr. College", note: "Completed in 2023", icon: GraduationCap },
+    { year: "2021", title: "Secondary School Education", place: "St. Xaviers High School", note: "Completed in 2021", icon: GraduationCap },
   ];
   return (
     <section className="mx-auto max-w-7xl px-6 py-12">
       <Reveal>
-        <div className="neon-card rounded-2xl p-8 md:p-10 grid md:grid-cols-[1fr_280px] gap-8">
-          <div>
-            <SectionTitle icon={GraduationCap} id="education">Education</SectionTitle>
-            <div className="relative pl-8">
-              <span className="absolute left-3 top-2 bottom-2 w-px" style={{ background: "linear-gradient(180deg, var(--cyan), var(--purple))" }} />
-              {items.map((it, i) => (
-                <div key={i} className="relative mb-8 last:mb-0">
-                  <span className="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full" style={{ background: "var(--cyan)", boxShadow: "0 0 12px var(--cyan)" }} />
-                  <div className="font-display text-sm" style={cyan}>{it.year}</div>
-                  <div className="font-semibold font-sans mt-1">{it.title}</div>
+        <div className="neon-card rounded-2xl p-8 md:p-10">
+          <SectionTitle icon={GraduationCap} id="education">Education</SectionTitle>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {items.map((it, i) => (
+              <Reveal key={i} delay={i * 100}>
+                <div className="edu-card neon-card rounded-xl p-6 h-full flex flex-col gap-3 transition-all duration-300 hover:scale-[1.02]">
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-sm px-3 py-1 rounded-full neon-border" style={cyan}>{it.year}</span>
+                    <span className="w-10 h-10 rounded-md flex items-center justify-center neon-border" style={cyan}>
+                      <it.icon className="w-5 h-5" />
+                    </span>
+                  </div>
+                  <div className="font-semibold font-sans text-lg leading-tight">{it.title}</div>
                   <div className="text-sm" style={{ color: "var(--purple)" }}>{it.place}</div>
-                  <div className="text-xs text-muted-foreground mt-1">📅 {it.note}</div>
+                  <div className="text-xs text-muted-foreground mt-auto">📅 {it.note}</div>
                 </div>
-              ))}
-            </div>
-          </div>
-          <div className="hidden md:flex items-center justify-center">
-            <img src={eduImg} alt="" width={640} height={512} className="floaty w-full h-auto" />
+              </Reveal>
+            ))}
           </div>
         </div>
       </Reveal>
@@ -239,17 +239,18 @@ export function Experience() {
       <Reveal>
         <div className="neon-card rounded-2xl p-8 md:p-10">
           <SectionTitle icon={Briefcase} id="experience">Experience</SectionTitle>
-          <div className="relative pl-10 space-y-10">
-            <span className="absolute left-4 top-2 bottom-2 w-px" style={{ background: "linear-gradient(180deg, var(--cyan), var(--purple))" }} />
+          <div className="space-y-8">
             {exps.map((e, i) => (
-              <div key={i} className="grid md:grid-cols-[1fr_1fr] gap-6 relative">
-                <span className="absolute -left-[26px] top-2 w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "oklch(0.18 0.04 265)", border: "1px solid var(--cyan)", color: "var(--cyan)", boxShadow: "0 0 16px oklch(0.85 0.15 200 / 0.4)" }}>
-                  <e.icon className="w-4 h-4" />
-                </span>
-                <div>
-                  <div className="font-semibold font-sans text-lg">{e.title}</div>
-                  <div style={{ color: "var(--cyan)" }}>{e.company}</div>
-                  <div className="text-xs text-muted-foreground mt-1">📅 {e.period}</div>
+              <div key={i} className="grid md:grid-cols-[1fr_1fr] gap-6 items-start">
+                <div className="flex items-start gap-3">
+                  <span className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "oklch(0.18 0.04 265)", border: "1px solid var(--cyan)", color: "var(--cyan)", boxShadow: "0 0 16px oklch(0.85 0.15 200 / 0.4)" }}>
+                    <e.icon className="w-4 h-4" />
+                  </span>
+                  <div className="min-w-0">
+                    <div className="font-semibold font-sans text-lg leading-tight">{e.title}</div>
+                    <div style={{ color: "var(--cyan)" }}>{e.company}</div>
+                    <div className="text-xs text-muted-foreground mt-1">📅 {e.period}</div>
+                  </div>
                 </div>
                 <ul className="space-y-2 text-sm text-foreground/85">
                   {e.points.map((p, j) => (
