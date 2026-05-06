@@ -356,7 +356,7 @@ export function Projects() {
                 <div className="p-5 flex-1 flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <h3 className="font-semibold font-sans">{p.title}</h3>
-                    <a href="#" aria-label="View project" style={cyan}><ExternalLink className="w-4 h-4" /></a>
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" aria-label="View project" style={cyan}><ExternalLink className="w-4 h-4" /></a>
                   </div>
                   <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
                   <div className="flex flex-wrap gap-2">
