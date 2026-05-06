@@ -7,7 +7,7 @@ const links = [
   { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
-  { id: "services", label: "Services" },
+  { id: "certifications", label: "Certifications" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
@@ -67,7 +67,7 @@ export function Navbar() {
             </a>
           ))}
         </nav>
-        <a href="#" className="btn-neon !px-4 !py-2 !text-xs">
+        <a href="https://drive.google.com/file/d/1ZsR0tMrD6knGT6yd4uKvvGxNmpqkXbWu/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn-neon !px-4 !py-2 !text-xs">
           <Download className="w-4 h-4" /> Download CV
         </a>
       </div>
