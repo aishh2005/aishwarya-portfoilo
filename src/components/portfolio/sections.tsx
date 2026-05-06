@@ -7,7 +7,7 @@ import {
  import profileImg from "@/assets/profile.png";
 import shieldImg from "@/assets/shield.png";
 import eduImg from "@/assets/education.png";
-import autismImg from "@/assets/project-autism.jpg";
+ import autismImg from "@/assets/project-autism.png";
 import foodImg from "@/assets/project-food.jpg";
 
 const cyan = { color: "var(--cyan)" } as const;
