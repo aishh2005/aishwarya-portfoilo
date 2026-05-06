@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Linkedin, Mail, Headphones } from "lucide-react";
+import { Download } from "lucide-react";
 
 const links = [
   { id: "home", label: "Home" },
@@ -67,17 +67,9 @@ export function Navbar() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <a aria-label="LinkedIn" href="https://linkedin.com/in/aishwarya-juwlekar" target="_blank" rel="noopener" className="w-9 h-9 rounded-md neon-border flex items-center justify-center hover:scale-110 transition" style={{ color: "var(--cyan)" }}>
-            <Linkedin className="w-4 h-4" />
-          </a>
-          <a aria-label="Support" href="#contact" className="w-9 h-9 rounded-md neon-border flex items-center justify-center hover:scale-110 transition" style={{ color: "var(--cyan)" }}>
-            <Headphones className="w-4 h-4" />
-          </a>
-          <a aria-label="Email" href="mailto:aishwaryahjuwlekar@gmail.com" className="w-9 h-9 rounded-md neon-border flex items-center justify-center hover:scale-110 transition" style={{ color: "var(--cyan)" }}>
-            <Mail className="w-4 h-4" />
-          </a>
-        </div>
+        <a href="#" className="btn-neon !px-4 !py-2 !text-xs">
+          <Download className="w-4 h-4" /> Download CV
+        </a>
       </div>
     </header>
   );
