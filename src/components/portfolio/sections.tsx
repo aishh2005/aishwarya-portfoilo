@@ -163,7 +163,7 @@ export function About() {
                   <h.icon className="w-4 h-4" />
                 </div>
                 <div className="leading-tight">
-                  <div className="text-sm font-semibold">{h.title}</div>
+                  <div className="text-sm font-semibold font-sans">{h.title}</div>
                   <div className="text-xs" style={{ color: "var(--purple)" }}>{h.sub}</div>
                 </div>
               </div>
@@ -193,7 +193,7 @@ export function Education() {
                 <div key={i} className="relative mb-8 last:mb-0">
                   <span className="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full" style={{ background: "var(--cyan)", boxShadow: "0 0 12px var(--cyan)" }} />
                   <div className="font-display text-sm" style={cyan}>{it.year}</div>
-                  <div className="font-semibold mt-1">{it.title}</div>
+                  <div className="font-semibold font-sans mt-1">{it.title}</div>
                   <div className="text-sm" style={{ color: "var(--purple)" }}>{it.place}</div>
                   <div className="text-xs text-muted-foreground mt-1">📅 {it.note}</div>
                 </div>
@@ -247,7 +247,7 @@ export function Experience() {
                   <e.icon className="w-4 h-4" />
                 </span>
                 <div>
-                  <div className="font-semibold text-lg">{e.title}</div>
+                  <div className="font-semibold font-sans text-lg">{e.title}</div>
                   <div style={{ color: "var(--cyan)" }}>{e.company}</div>
                   <div className="text-xs text-muted-foreground mt-1">📅 {e.period}</div>
                 </div>
@@ -280,7 +280,7 @@ export function Skills() {
           <div className="space-y-6">
             {groups.map((g) => (
               <div key={g.title}>
-                <h3 className="text-base font-semibold mb-3" style={{ color: "var(--cyan)" }}>{g.title}</h3>
+                <h3 className="text-base font-semibold font-sans mb-3" style={{ color: "var(--cyan)" }}>{g.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {g.tags.map((t) => <span key={t} className="chip">{t}</span>)}
                 </div>
@@ -312,7 +312,7 @@ export function Services() {
                 <div className="w-12 h-12 rounded-lg mx-auto mb-4 flex items-center justify-center" style={{ background: "oklch(0.7 0.2 310 / 0.12)", color: "var(--cyan)", border: "1px solid oklch(0.85 0.15 200 / 0.3)" }}>
                   <s.icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-semibold text-sm mb-2">{s.title}</h3>
+                <h3 className="font-semibold font-sans text-sm mb-2">{s.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
               </div>
             ))}
@@ -351,7 +351,7 @@ export function Projects() {
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="font-semibold">{p.title}</h3>
+                    <h3 className="font-semibold font-sans">{p.title}</h3>
                     <a href="#" aria-label="View project" style={cyan}><ExternalLink className="w-4 h-4" /></a>
                   </div>
                   <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
