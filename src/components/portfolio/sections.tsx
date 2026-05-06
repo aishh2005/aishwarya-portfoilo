@@ -2,7 +2,8 @@ import { Reveal } from "./Reveal";
 import {
   Shield, User, GraduationCap, Briefcase, Cpu, Box, FolderGit2, Send,
   Mail, Phone, MapPin, Linkedin, Github, Code2, Search, UserSearch,
-  FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown
+  FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown,
+  Lock, Terminal, Zap, Wifi, Activity
 } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import shieldImg from "@/assets/shield.png";
@@ -27,57 +28,180 @@ function SectionTitle({ icon: Icon, children, id }: { icon: any; children: React
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-screen pt-24 pb-16 overflow-hidden">
+    <section id="home" className="relative min-h-screen pt-24 pb-20 overflow-hidden">
+      {/* Backgrounds */}
       <div className="absolute inset-0 grid-bg opacity-60" aria-hidden />
       <div className="absolute inset-0 pointer-events-none" aria-hidden style={{
-        background: "radial-gradient(circle at 80% 50%, oklch(0.7 0.2 310 / 0.18), transparent 50%), radial-gradient(circle at 10% 30%, oklch(0.85 0.15 200 / 0.15), transparent 50%)",
+        background: "radial-gradient(circle at 80% 40%, oklch(0.7 0.2 310 / 0.22), transparent 55%), radial-gradient(circle at 12% 25%, oklch(0.85 0.15 200 / 0.18), transparent 55%), radial-gradient(circle at 50% 100%, oklch(0.7 0.2 310 / 0.15), transparent 60%)",
       }} />
-      <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[420px_1fr_360px] gap-10 items-center">
+      {/* Floating code glyphs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+        {["01001", "</>", "{ }", "0xFF", "SHA256", "TCP/IP", "AES", "RSA"].map((t, i) => (
+          <span
+            key={i}
+            className="absolute font-display text-xs tracking-widest"
+            style={{
+              top: `${(i * 13 + 8) % 90}%`,
+              left: `${(i * 19 + 5) % 92}%`,
+              color: i % 2 ? "var(--purple)" : "var(--cyan)",
+              opacity: 0.18,
+              animation: `float ${6 + (i % 4)}s ease-in-out infinite`,
+              animationDelay: `${i * 0.4}s`,
+            }}
+          >{t}</span>
+        ))}
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[440px_1fr_360px] gap-10 items-center">
+        {/* Profile HUD */}
         <Reveal>
-          <div className="frame-corners p-2 mx-auto" style={{ maxWidth: 380 }}>
-            <div className="rounded-md overflow-hidden neon-border">
-              <img src={profileImg} alt="Aishwarya Hemant Juwlekar" width={1024} height={1024} className="w-full h-auto block" />
+          <div className="relative mx-auto w-full" style={{ maxWidth: 400 }}>
+            <div className="hud-frame relative overflow-hidden">
+              <span className="hud-corner-tr" />
+              <span className="hud-corner-bl" />
+
+              {/* Top status bar */}
+              <div className="absolute top-3 left-4 right-4 z-10 flex items-center justify-between text-[10px] font-display tracking-[0.2em]">
+                <div className="flex items-center gap-2" style={{ color: "var(--cyan)" }}>
+                  <span className="status-dot" />
+                  <span>SECURE</span>
+                </div>
+                <span style={{ color: "var(--purple)" }}>ID//AJ-2026</span>
+              </div>
+
+              <div className="rounded-md overflow-hidden relative neon-border">
+                <img src={profileImg} alt="Aishwarya Hemant Juwlekar" width={1024} height={1024} className="w-full h-auto block" />
+                <div className="scan-line" />
+                {/* Bottom gradient overlay */}
+                <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style={{
+                  background: "linear-gradient(180deg, transparent, oklch(0.13 0.03 260 / 0.95))",
+                }} />
+                {/* HUD label */}
+                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+                  <div>
+                    <div className="font-display text-[10px] tracking-[0.3em]" style={{ color: "var(--cyan)" }}>OPERATOR</div>
+                    <div className="font-bold text-sm">Aishwarya H. Juwlekar</div>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[10px] font-display tracking-[0.2em]" style={{ color: "var(--purple)" }}>
+                    <Wifi className="w-3 h-3" /> ONLINE
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating badges */}
+            <div className="absolute -top-3 -right-3 stat-card flex items-center gap-2 hidden sm:flex">
+              <Lock className="w-4 h-4" style={cyan} />
+              <div className="leading-tight">
+                <div className="text-[9px] font-display tracking-[0.2em] text-muted-foreground">CLEARANCE</div>
+                <div className="text-xs font-bold" style={cyan}>LEVEL · A</div>
+              </div>
+            </div>
+            <div className="absolute -bottom-4 -left-3 stat-card flex items-center gap-2 hidden sm:flex">
+              <Activity className="w-4 h-4" style={{ color: "var(--purple)" }} />
+              <div className="leading-tight">
+                <div className="text-[9px] font-display tracking-[0.2em] text-muted-foreground">STATUS</div>
+                <div className="text-xs font-bold" style={{ color: "var(--purple)" }}>AVAILABLE</div>
+              </div>
             </div>
           </div>
         </Reveal>
 
+        {/* Center content */}
         <Reveal delay={150}>
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-foreground/80 italic font-light text-lg">Hi, I'm</span>
-              <span className="h-px w-16" style={{ background: "var(--cyan)" }} />
+            <div className="flex flex-wrap items-center gap-2 mb-5">
+              <span className="tag-pill"><Terminal className="w-3 h-3" /> /home/aishwarya</span>
+              <span className="tag-pill" style={{ borderColor: "oklch(0.7 0.2 310 / 0.4)", color: "var(--purple)" }}>
+                <span className="status-dot" /> Open to Work
+              </span>
             </div>
-            <p className="tracking-[0.3em] text-foreground/90 text-sm md:text-base mb-3 font-display">
-              AISHWARYA HEMANT JUWLEKAR
+
+            <div className="flex items-center gap-3 mb-3">
+              <span className="font-display text-xs tracking-[0.3em]" style={cyan}>&gt; WHOAMI</span>
+              <span className="h-px flex-1 max-w-[120px]" style={{ background: "linear-gradient(90deg, var(--cyan), transparent)" }} />
+            </div>
+            <p className="tracking-[0.3em] text-foreground/90 text-sm md:text-base mb-4 font-display">
+              AISHWARYA HEMANT JUWLEKAR<span className="caret">▍</span>
             </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-2 text-gradient glow-text">
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] mb-1 text-gradient glow-text">
               CYBER SECURITY
             </h1>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] text-gradient glow-text">
-              & NETWORKING
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-gradient glow-text">
+              &amp; NETWORKING
             </h1>
+
             <div className="flex items-center gap-3 my-6">
-              <span className="h-px flex-1 max-w-[180px]" style={{ background: "linear-gradient(90deg, transparent, var(--cyan))" }} />
+              <span className="h-px flex-1 max-w-[160px]" style={{ background: "linear-gradient(90deg, transparent, var(--cyan))" }} />
               <Shield className="w-4 h-4" style={cyan} />
-              <span className="h-px flex-1 max-w-[180px]" style={{ background: "linear-gradient(90deg, var(--purple), transparent)" }} />
+              <span className="h-px flex-1 max-w-[160px]" style={{ background: "linear-gradient(90deg, var(--purple), transparent)" }} />
             </div>
+
             <p className="font-display tracking-[0.25em] text-sm md:text-base mb-5">
               <span style={cyan}>DEFENDING SYSTEMS.</span>{" "}
               <span style={{ color: "var(--purple)" }}>SECURING CONNECTIONS.</span>
             </p>
             <p className="text-foreground/80 max-w-xl leading-relaxed mb-8">
-              Focused on protecting digital assets and building secure network infrastructures.
-              Driven by curiosity and guided by a strong passion for cybersecurity and threat detection.
+              B.Sc. IT graduate (2026) focused on protecting digital assets, threat detection,
+              and building resilient network infrastructures — fueled by curiosity and a passion for ethical hacking.
             </p>
-            <a href="#contact" className="btn-neon">
-              <User className="w-4 h-4" /> Contact Me
-            </a>
+
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <a href="#contact" className="btn-neon">
+                <Zap className="w-4 h-4" /> Hire Me
+              </a>
+              <a
+                href="#projects"
+                className="btn-neon"
+                style={{
+                  borderColor: "var(--purple)",
+                  color: "var(--purple)",
+                }}
+              >
+                <FolderGit2 className="w-4 h-4" /> View Work
+              </a>
+            </div>
+
+            {/* Stat row */}
+            <div className="grid grid-cols-3 gap-3 max-w-xl">
+              {[
+                { v: "2+", l: "Internships" },
+                { v: "5+", l: "Projects" },
+                { v: "10+", l: "Sec. Tools" },
+              ].map((s) => (
+                <div key={s.l} className="stat-card text-center">
+                  <div className="font-display text-2xl font-bold text-gradient">{s.v}</div>
+                  <div className="text-[10px] font-display tracking-[0.2em] text-muted-foreground mt-1">{s.l}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
 
+        {/* Right shield with orbit rings */}
         <Reveal delay={300}>
           <div className="hidden lg:block relative">
-            <img src={shieldImg} alt="" width={768} height={896} className="floaty pulse-glow w-full h-auto" />
+            <div className="relative aspect-square">
+              {/* Orbit rings */}
+              <div className="absolute inset-0 rounded-full orbit-slow" style={{
+                border: "1px dashed oklch(0.85 0.15 200 / 0.35)",
+              }} />
+              <div className="absolute inset-6 rounded-full orbit-rev" style={{
+                border: "1px dashed oklch(0.7 0.2 310 / 0.35)",
+              }} />
+              <div className="absolute inset-12 rounded-full orbit-slow" style={{
+                border: "1px solid oklch(0.85 0.15 200 / 0.15)",
+              }} />
+              {/* Orbit dots */}
+              <span className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full" style={{
+                background: "var(--cyan)", boxShadow: "0 0 12px var(--cyan)",
+              }} />
+              <span className="absolute bottom-6 right-6 w-2 h-2 rounded-full" style={{
+                background: "var(--purple)", boxShadow: "0 0 12px var(--purple)",
+              }} />
+              <img src={shieldImg} alt="" width={768} height={896} className="floaty pulse-glow absolute inset-0 m-auto w-[90%] h-auto" />
+            </div>
           </div>
         </Reveal>
       </div>
