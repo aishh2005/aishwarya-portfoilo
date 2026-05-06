@@ -3,6 +3,7 @@ import {
   Shield, User, GraduationCap, Briefcase, Cpu, Box, FolderGit2, Send,
   Mail, Phone, MapPin, Linkedin, Github, Code2, Search, UserSearch,
   FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown,
+  Award, BadgeCheck, Terminal, ShieldAlert,
 } from "lucide-react";
  import profileImg from "@/assets/profile.png";
 import shieldImg from "@/assets/shield.png";
@@ -294,28 +295,65 @@ export function Skills() {
   );
 }
 
-export function Services() {
+export function Certifications() {
   const list = [
-    { icon: ShieldCheck, title: "Security Assessments", desc: "Identify potential vulnerabilities in systems and networks." },
-    { icon: Search, title: "Vulnerability Analysis", desc: "Analyze and evaluate security weaknesses and risks." },
-    { icon: UserSearch, title: "Penetration Testing (Basic)", desc: "Perform entry-level penetration testing in safe and controlled environments." },
-    { icon: FileText, title: "Incident Documentation", desc: "Document and report security incidents with clear recommendations." },
-    { icon: Network, title: "Network Security Support", desc: "Assist in securing networks and IT infrastructures with best practices." },
+    {
+      icon: ShieldAlert,
+      title: "Ethical Hacking Concepts",
+      issuer: "Infosys Springboard",
+      date: "24 February 2025",
+      desc: "Completed a course on ethical hacking concepts, gaining strong knowledge of cybersecurity fundamentals, ethical hacking techniques, and securing digital assets.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Real-Time Threat Detection and Management",
+      issuer: "Patkar-Varde College (Erasmus+ CS4ALL)",
+      date: "June 2025",
+      desc: "Learned real-time threat detection, cybersecurity practices, and incident management through a hands-on academic program.",
+    },
+    {
+      icon: Terminal,
+      title: "Python for Cyber Security",
+      issuer: "Patkar-Varde College (Erasmus+ CS4ALL)",
+      date: "Dec 2025",
+      desc: "Gained practical knowledge of using Python for cybersecurity, improving problem-solving and analytical skills.",
+    },
+    {
+      icon: BadgeCheck,
+      title: "Real-Time Threat Detection and Management (Advanced)",
+      issuer: "",
+      date: "28 February 2026",
+      desc: "Strengthened expertise in identifying and managing real-time cybersecurity threats and improved incident response skills.",
+    },
   ];
   return (
     <section className="mx-auto max-w-7xl px-6 py-12">
       <Reveal>
         <div className="neon-card rounded-2xl p-8 md:p-10">
-          <SectionTitle icon={Box} id="services">Services</SectionTitle>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-            {list.map((s) => (
-              <div key={s.title} className="neon-card rounded-xl p-5 text-center">
-                <div className="w-12 h-12 rounded-lg mx-auto mb-4 flex items-center justify-center" style={{ background: "oklch(0.7 0.2 310 / 0.12)", color: "var(--cyan)", border: "1px solid oklch(0.85 0.15 200 / 0.3)" }}>
-                  <s.icon className="w-6 h-6" />
+          <SectionTitle icon={Award} id="certifications">Certifications</SectionTitle>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {list.map((c, i) => (
+              <Reveal key={c.title} delay={i * 80}>
+                <div className="flip-card h-64 w-full">
+                  <div className="flip-card-inner">
+                    {/* Front */}
+                    <div className="flip-card-front neon-card items-center justify-center text-center gap-3">
+                      <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: "oklch(0.7 0.2 310 / 0.12)", color: "var(--cyan)", border: "1px solid oklch(0.85 0.15 200 / 0.3)" }}>
+                        <c.icon className="w-6 h-6" />
+                      </div>
+                      <h3 className="font-semibold font-sans text-sm leading-tight">{c.title}</h3>
+                      {c.issuer && (
+                        <p className="text-xs" style={{ color: "var(--purple)" }}>{c.issuer}</p>
+                      )}
+                      <p className="text-[11px] text-muted-foreground">📅 {c.date}</p>
+                    </div>
+                    {/* Back */}
+                    <div className="flip-card-back neon-card justify-center text-center" style={{ borderColor: "var(--cyan)", boxShadow: "0 0 30px color-mix(in oklab, var(--cyan) 35%, transparent)" }}>
+                      <p className="text-xs leading-relaxed text-foreground/90">{c.desc}</p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-semibold font-sans text-sm mb-2">{s.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -331,12 +369,14 @@ export function Projects() {
       title: "Website for Autistic Children",
       desc: "React-based web application designed with accessibility and user-friendliness in mind. Focuses on creating an inclusive digital experience for children with special needs.",
       tags: ["React", "JavaScript", "CSS", "Accessibility"],
+      href: "https://talk-to-me-82a68.web.app/",
     },
     {
       img: foodImg,
       title: "Juwlekar's Foods Website",
       desc: "Responsive website built using HTML, CSS, and JavaScript for a food-based business. Features clean UI, interactive elements, and smooth experience across devices.",
       tags: ["HTML", "CSS", "JavaScript"],
+      href: "https://github.com/aishh2005/Juwlekars_Foods",
     },
   ];
   return (
@@ -353,7 +393,7 @@ export function Projects() {
                 <div className="p-5 flex-1 flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <h3 className="font-semibold font-sans">{p.title}</h3>
-                    <a href="#" aria-label="View project" style={cyan}><ExternalLink className="w-4 h-4" /></a>
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" aria-label="View project" style={cyan}><ExternalLink className="w-4 h-4" /></a>
                   </div>
                   <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
                   <div className="flex flex-wrap gap-2">
