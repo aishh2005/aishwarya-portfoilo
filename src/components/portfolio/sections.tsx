@@ -3,6 +3,7 @@ import {
   Shield, User, GraduationCap, Briefcase, Cpu, Box, FolderGit2, Send,
   Mail, Phone, MapPin, Linkedin, Github, Code2, Search, UserSearch,
   FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown,
+  Award, BadgeCheck, Terminal, ShieldAlert,
 } from "lucide-react";
  import profileImg from "@/assets/profile.png";
 import shieldImg from "@/assets/shield.png";
@@ -331,12 +332,14 @@ export function Projects() {
       title: "Website for Autistic Children",
       desc: "React-based web application designed with accessibility and user-friendliness in mind. Focuses on creating an inclusive digital experience for children with special needs.",
       tags: ["React", "JavaScript", "CSS", "Accessibility"],
+      href: "https://talk-to-me-82a68.web.app/",
     },
     {
       img: foodImg,
       title: "Juwlekar's Foods Website",
       desc: "Responsive website built using HTML, CSS, and JavaScript for a food-based business. Features clean UI, interactive elements, and smooth experience across devices.",
       tags: ["HTML", "CSS", "JavaScript"],
+      href: "https://github.com/aishh2005/Juwlekars_Foods",
     },
   ];
   return (
