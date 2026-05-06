@@ -4,7 +4,7 @@ import {
   Mail, Phone, MapPin, Linkedin, Github, Code2, Search, UserSearch,
   FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown,
 } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+ import profileImg from "@/assets/profile.png";
 import shieldImg from "@/assets/shield.png";
 import eduImg from "@/assets/education.png";
 import autismImg from "@/assets/project-autism.jpg";
@@ -78,11 +78,11 @@ export function Hero() {
               AISHWARYA HEMANT JUWLEKAR
             </p>
 
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] mb-1 text-gradient glow-text">
-              CYBER SECURITY
-            </h1>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-gradient glow-text">
-              &amp; NETWORKING
+             <h1 className="font-display md:text-6xl lg:text-7xl font-extrabold leading-[1.02] mb-1 text-gradient glow-text text-5xl">
+               CYBER SECURITY &
+             </h1>
+             <h1 className="font-display md:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-gradient glow-text text-5xl">
+               NETWORKING
             </h1>
 
             <div className="flex items-center gap-3 my-6 justify-center lg:justify-start">
