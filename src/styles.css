@@ -245,4 +245,25 @@
 
   @keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
   .caret { display: inline-block; width: 0.6ch; animation: blink 1s steps(1) infinite; color: var(--cyan); }
+
+  /* Flip card */
+  .flip-card { perspective: 1200px; }
+  .flip-card-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner { transform: rotateY(-180deg); }
+  .flip-card-front, .flip-card-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 0.75rem;
+    display: flex; flex-direction: column;
+    padding: 1.25rem;
+  }
+  .flip-card-back { transform: rotateY(180deg); }
+  .flip-card:hover { transform: scale(1.03); }
+  .flip-card { transition: transform 0.4s ease-in-out; }
 }
