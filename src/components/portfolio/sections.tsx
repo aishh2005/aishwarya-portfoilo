@@ -3,7 +3,6 @@ import {
   Shield, User, GraduationCap, Briefcase, Cpu, Box, FolderGit2, Send,
   Mail, Phone, MapPin, Linkedin, Github, Code2, Search, UserSearch,
   FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown,
-  Lock, Terminal, Zap, Wifi, Activity
 } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import shieldImg from "@/assets/shield.png";
