@@ -388,7 +388,7 @@ export function Contact() {
                 { icon: Phone, text: "+91 8421099761", href: "tel:+918421099761" },
                 { icon: MapPin, text: "Virar, Mumbai, Maharashtra, India" },
                 { icon: Linkedin, text: "linkedin.com/in/aishwarya-juwlekar", href: "https://linkedin.com/in/aishwarya-juwlekar" },
-                { icon: Github, text: "GitHub Link (To be added soon)" },
+                 { icon: Github, text: "https://github.com/aishh2005", href: "https://github.com/aishh2005" },
               ].map((c, i) => (
                 <a key={i} href={c.href || "#"} target={c.href?.startsWith("http") ? "_blank" : undefined} rel="noopener" className="flex items-center gap-3 hover:text-cyan transition" style={{ color: "inherit" }}>
                   <span className="w-9 h-9 rounded-md neon-border flex items-center justify-center shrink-0" style={cyan}>
