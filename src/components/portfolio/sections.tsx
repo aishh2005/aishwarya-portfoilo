@@ -3,8 +3,9 @@ import {
   Shield, User, GraduationCap, Briefcase, Cpu, Box, FolderGit2, Send,
   Mail, Phone, MapPin, Linkedin, Github, Code2, Search, UserSearch,
   FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown,
-  Award, BadgeCheck, Terminal, ShieldAlert,
+  Award, BadgeCheck, Terminal, ShieldAlert, X,
 } from "lucide-react";
+import { useState, useEffect } from "react";
  import profileImg from "@/assets/profile.png";
 import shieldImg from "@/assets/shield.png";
 import eduImg from "@/assets/education.png";
