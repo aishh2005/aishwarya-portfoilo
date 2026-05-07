@@ -8,6 +8,10 @@ import {
 import { useState, useEffect } from "react";
  import profileImg from "@/assets/profile.png";
 import shieldImg from "@/assets/shield.png";
+import certEthicalHacking from "@/assets/cert-ethical-hacking.jpg";
+import certRttdm1 from "@/assets/cert-rttdm-1.png";
+import certPythonCyberSec from "@/assets/cert-python-cybersec.png";
+import certRttdm2 from "@/assets/cert-rttdm-2.jpg";
 import eduImg from "@/assets/education.png";
  import autismImg from "@/assets/project-autism.png";
 import foodImg from "@/assets/project-food.jpg";
@@ -304,7 +308,7 @@ export function Certifications() {
       issuer: "Infosys Springboard",
       date: "24 February 2025",
       desc: "Completed a course on ethical hacking concepts, gaining strong knowledge of cybersecurity fundamentals, ethical hacking techniques, and securing digital assets.",
-      image: shieldImg,
+      image: certEthicalHacking,
     },
     {
       icon: ShieldCheck,
@@ -312,7 +316,7 @@ export function Certifications() {
       issuer: "Patkar-Varde College (Erasmus+ CS4ALL)",
       date: "June 2025",
       desc: "Learned real-time threat detection, cybersecurity practices, and incident management through a hands-on academic program.",
-      image: shieldImg,
+      image: certRttdm1,
     },
     {
       icon: Terminal,
@@ -320,7 +324,7 @@ export function Certifications() {
       issuer: "Patkar-Varde College (Erasmus+ CS4ALL)",
       date: "Dec 2025",
       desc: "Gained practical knowledge of using Python for cybersecurity, improving problem-solving and analytical skills.",
-      image: shieldImg,
+      image: certPythonCyberSec,
     },
     {
       icon: BadgeCheck,
@@ -328,7 +332,7 @@ export function Certifications() {
       issuer: "",
       date: "28 February 2026",
       desc: "Strengthened expertise in identifying and managing real-time cybersecurity threats and improved incident response skills.",
-      image: shieldImg,
+      image: certRttdm2,
     },
   ];
   const [active, setActive] = useState<number | null>(null);
