@@ -304,6 +304,7 @@ export function Certifications() {
       issuer: "Infosys Springboard",
       date: "24 February 2025",
       desc: "Completed a course on ethical hacking concepts, gaining strong knowledge of cybersecurity fundamentals, ethical hacking techniques, and securing digital assets.",
+      image: shieldImg,
     },
     {
       icon: ShieldCheck,
@@ -311,6 +312,7 @@ export function Certifications() {
       issuer: "Patkar-Varde College (Erasmus+ CS4ALL)",
       date: "June 2025",
       desc: "Learned real-time threat detection, cybersecurity practices, and incident management through a hands-on academic program.",
+      image: shieldImg,
     },
     {
       icon: Terminal,
@@ -318,6 +320,7 @@ export function Certifications() {
       issuer: "Patkar-Varde College (Erasmus+ CS4ALL)",
       date: "Dec 2025",
       desc: "Gained practical knowledge of using Python for cybersecurity, improving problem-solving and analytical skills.",
+      image: shieldImg,
     },
     {
       icon: BadgeCheck,
@@ -325,8 +328,21 @@ export function Certifications() {
       issuer: "",
       date: "28 February 2026",
       desc: "Strengthened expertise in identifying and managing real-time cybersecurity threats and improved incident response skills.",
+      image: shieldImg,
     },
   ];
+  const [active, setActive] = useState<number | null>(null);
+  useEffect(() => {
+    if (active === null) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setActive(null); };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+  const current = active !== null ? list[active] : null;
   return (
     <section className="mx-auto max-w-7xl px-6 py-12">
       <Reveal>
@@ -335,7 +351,7 @@ export function Certifications() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {list.map((c, i) => (
               <Reveal key={c.title} delay={i * 80}>
-                <div className="flip-card h-64 w-full">
+                <div className="flip-card h-64 w-full group" onClick={() => setActive(i)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") setActive(i); }}>
                   <div className="flip-card-inner">
                     {/* Front */}
                     <div className="flip-card-front neon-card items-center justify-center text-center gap-3">
@@ -349,8 +365,8 @@ export function Certifications() {
                       <p className="text-[11px] text-muted-foreground">📅 {c.date}</p>
                     </div>
                     {/* Back */}
-                    <div className="flip-card-back neon-card justify-center text-center" style={{ borderColor: "var(--cyan)", boxShadow: "0 0 30px color-mix(in oklab, var(--cyan) 35%, transparent)" }}>
-                      <p className="text-xs leading-relaxed text-foreground/90">{c.desc}</p>
+                    <div className="flip-card-back neon-card overflow-hidden !p-0" style={{ borderColor: "var(--cyan)", boxShadow: "0 0 30px color-mix(in oklab, var(--cyan) 35%, transparent)" }}>
+                      <img src={c.image} alt={c.title} className="w-full h-full object-cover" />
                     </div>
                   </div>
                 </div>
@@ -359,6 +375,39 @@ export function Certifications() {
           </div>
         </div>
       </Reveal>
+      {current && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in"
+          style={{ background: "oklch(0.05 0.02 265 / 0.7)", backdropFilter: "blur(8px)" }}
+          onClick={() => setActive(null)}
+        >
+          <div
+            className="neon-card rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden grid md:grid-cols-2 relative animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+            style={{ borderColor: "var(--cyan)", boxShadow: "0 0 40px color-mix(in oklab, var(--cyan) 35%, transparent)" }}
+          >
+            <button
+              onClick={() => setActive(null)}
+              aria-label="Close"
+              className="absolute top-3 right-3 w-9 h-9 rounded-md neon-border flex items-center justify-center z-10 hover:scale-110 transition"
+              style={cyan}
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="bg-black/40 flex items-center justify-center p-4">
+              <img src={current.image} alt={current.title} className="max-h-[80vh] w-full object-contain rounded-md" />
+            </div>
+            <div className="p-6 md:p-8 flex flex-col gap-4 overflow-y-auto">
+              <h3 className="font-display text-xl md:text-2xl font-bold" style={cyan}>{current.title}</h3>
+              {current.issuer && (
+                <p className="text-sm" style={{ color: "var(--purple)" }}>{current.issuer}</p>
+              )}
+              <p className="text-xs text-muted-foreground">📅 {current.date}</p>
+              <p className="text-sm leading-relaxed text-foreground/90">{current.desc}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
