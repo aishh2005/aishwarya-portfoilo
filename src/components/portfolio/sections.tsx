@@ -117,8 +117,27 @@ export function Hero() {
         {/* Right shield */}
         <Reveal delay={300}>
           <div className="hidden lg:block relative">
-            <div className="relative aspect-square">
-              <img src={shieldImg} alt="" width={768} height={896} className="floaty pulse-glow absolute inset-0 m-auto w-[95%] h-auto" />
+          <div className="relative aspect-square holo-stage">
+            {/* Rotating rings */}
+            <div className="holo-ring holo-ring-1" aria-hidden />
+            <div className="holo-ring holo-ring-2" aria-hidden />
+            <div className="holo-ring holo-ring-3" aria-hidden />
+            {/* Soft radial aura */}
+            <div className="holo-aura" aria-hidden />
+            {/* Light streaks */}
+            <span className="holo-streak holo-streak-a" aria-hidden />
+            <span className="holo-streak holo-streak-b" aria-hidden />
+            {/* Shield */}
+            <img src={shieldImg} alt="" width={768} height={896} className="floaty pulse-glow absolute inset-0 m-auto w-[78%] h-auto drop-shadow-[0_0_40px_var(--cyan)] z-10" />
+            {/* Orbiting particles */}
+            <div className="absolute inset-0 orbit-slow z-0" aria-hidden>
+              <span className="holo-dot" style={{ top: "8%", left: "50%", background: "var(--cyan)" }} />
+              <span className="holo-dot" style={{ bottom: "10%", right: "12%", background: "var(--purple)" }} />
+            </div>
+            <div className="absolute inset-0 orbit-rev z-0" aria-hidden>
+              <span className="holo-dot" style={{ top: "20%", right: "8%", background: "var(--cyan)" }} />
+              <span className="holo-dot" style={{ bottom: "20%", left: "10%", background: "var(--purple)" }} />
+            </div>
             </div>
           </div>
         </Reveal>
