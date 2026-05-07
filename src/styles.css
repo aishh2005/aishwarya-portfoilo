@@ -247,12 +247,13 @@
   .caret { display: inline-block; width: 0.6ch; animation: blink 1s steps(1) infinite; color: var(--cyan); }
 
   /* Flip card */
-  .flip-card { perspective: 1200px; }
+  .flip-card { perspective: 1200px; cursor: pointer; transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; border-radius: 0.75rem; }
   .flip-card-inner {
     position: relative;
     width: 100%; height: 100%;
     transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
     transform-style: preserve-3d;
+    will-change: transform;
   }
   .flip-card:hover .flip-card-inner { transform: rotateY(-180deg); }
   .flip-card-front, .flip-card-back {
@@ -262,8 +263,8 @@
     border-radius: 0.75rem;
     display: flex; flex-direction: column;
     padding: 1.25rem;
+    overflow: hidden;
   }
   .flip-card-back { transform: rotateY(180deg); }
-  .flip-card:hover { transform: scale(1.03); }
-  .flip-card { transition: transform 0.4s ease-in-out; }
+  .flip-card:hover { transform: scale(1.03); box-shadow: 0 0 40px color-mix(in oklab, var(--cyan) 45%, transparent); }
 }
