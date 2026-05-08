@@ -15,6 +15,9 @@ import certRttdm2 from "@/assets/cert-rttdm-2.jpg";
 import eduImg from "@/assets/education.png";
  import autismImg from "@/assets/project-autism.png";
 import foodImg from "@/assets/project-food.jpg";
+import aboutPortrait from "@/assets/about-cyber-portrait.png";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 
 const cyan = { color: "var(--cyan)" } as const;
 
@@ -163,7 +166,7 @@ export function About() {
       <Reveal>
         <div className="neon-card rounded-2xl p-8 md:p-10">
           <SectionTitle icon={User} id="about">About Me</SectionTitle>
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-start">
+          <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
             <div>
               <div className="space-y-4 text-foreground/85 leading-relaxed">
             <p>
@@ -183,11 +186,37 @@ export function About() {
             </p>
             <p>Outside of tech, I enjoy travelling and expressing creativity through painting and mandala art.</p>
               </div>
-              <div className="grid grid-cols-2 gap-4 mt-8">
+            </div>
+
+            {/* Personal cyber portrait */}
+            <div className="relative hidden md:block">
+              <div className="relative aspect-square max-w-md mx-auto holo-stage">
+                <div className="holo-aura" aria-hidden />
+                <div className="holo-ring holo-ring-1" aria-hidden />
+                <div className="holo-ring holo-ring-2" aria-hidden />
+                <span className="holo-streak holo-streak-a" aria-hidden />
+                <span className="holo-streak holo-streak-b" aria-hidden />
+                <img
+                  src={aboutPortrait}
+                  alt="Cyber portrait of Aishwarya"
+                  loading="lazy"
+                  width={896}
+                  height={1024}
+                  className="floaty relative z-10 w-[88%] h-auto mx-auto block drop-shadow-[0_0_30px_var(--cyan)]"
+                />
+                <div className="absolute inset-0 orbit-slow z-0" aria-hidden>
+                  <span className="holo-dot" style={{ top: "8%", left: "50%", background: "var(--cyan)" }} />
+                  <span className="holo-dot" style={{ bottom: "10%", right: "12%", background: "var(--purple)" }} />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Highlights row at bottom */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
             {highlights.map((h) => (
               <div key={h.title} className="neon-card rounded-lg p-4 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-md flex items-center justify-center" style={{ background: "oklch(0.85 0.15 200 / 0.1)", color: "var(--cyan)" }}>
-                  <h.icon className="w-4 h-4" />
+                <div className="w-10 h-10 rounded-md flex items-center justify-center shrink-0" style={{ background: "oklch(0.85 0.15 200 / 0.1)", color: "var(--cyan)" }}>
+                  <h.icon className="w-5 h-5" />
                 </div>
                 <div className="leading-tight">
                   <div className="text-sm font-semibold font-sans">{h.title}</div>
@@ -195,51 +224,6 @@ export function About() {
                 </div>
               </div>
             ))}
-              </div>
-            </div>
-
-            {/* Holographic identity scan UI */}
-            <div className="relative hidden md:block">
-              <div className="holo-panel">
-                <div className="holo-panel-header">
-                  <span className="status-dot" />
-                  <span className="font-display text-[10px] tracking-[0.3em]" style={cyan}>IDENTITY · SCAN</span>
-                  <span className="ml-auto font-display text-[10px] tracking-[0.25em]" style={{ color: "var(--purple)" }}>SECURE</span>
-                </div>
-
-                <div className="holo-orb-wrap">
-                  <div className="holo-ring holo-ring-1" aria-hidden />
-                  <div className="holo-ring holo-ring-2" aria-hidden />
-                  <div className="holo-ring holo-ring-3" aria-hidden />
-                  <div className="holo-aura" aria-hidden />
-                  <div className="holo-core">
-                    <ShieldCheck className="w-10 h-10" style={cyan} />
-                  </div>
-                  <div className="absolute inset-0 orbit-slow" aria-hidden>
-                    <span className="holo-dot" style={{ top: "5%", left: "50%", background: "var(--cyan)" }} />
-                    <span className="holo-dot" style={{ bottom: "8%", right: "12%", background: "var(--purple)" }} />
-                  </div>
-                  <div className="absolute inset-0 orbit-rev" aria-hidden>
-                    <span className="holo-dot" style={{ top: "20%", right: "5%", background: "var(--cyan)" }} />
-                    <span className="holo-dot" style={{ bottom: "18%", left: "8%", background: "var(--purple)" }} />
-                  </div>
-                </div>
-
-                <div className="holo-bars">
-                  {[
-                    { label: "ENCRYPTION", value: 96, color: "var(--cyan)" },
-                    { label: "INTEGRITY", value: 88, color: "var(--purple)" },
-                    { label: "FIREWALL", value: 92, color: "var(--cyan)" },
-                  ].map((b) => (
-                    <div key={b.label} className="holo-bar-row">
-                      <span className="font-display text-[10px] tracking-[0.2em] text-foreground/70">{b.label}</span>
-                      <div className="holo-bar"><span style={{ width: `${b.value}%`, background: b.color }} /></div>
-                      <span className="font-display text-[10px]" style={{ color: b.color }}>{b.value}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </Reveal>
