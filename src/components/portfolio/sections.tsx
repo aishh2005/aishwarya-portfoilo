@@ -519,6 +519,8 @@ export function Contact() {
     e.preventDefault();
     if (!formRef.current) return;
     setStatus("sending");
+    const timeInput = formRef.current.elements.namedItem("time") as HTMLInputElement | null;
+    if (timeInput) timeInput.value = new Date().toLocaleString();
     emailjs
       .sendForm("service_k35gk34", "template_nshnh2s", formRef.current, { publicKey: "fx3n2QaHtxPv7yX-c" })
       .then(() => {
@@ -569,6 +571,7 @@ export function Contact() {
             </div>
             {/* RIGHT — form */}
             <form ref={formRef} onSubmit={onSubmit} className="cyber-form space-y-5">
+              <input type="hidden" name="time" />
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="cyber-field">
                   <label className="cyber-label">Name</label>
