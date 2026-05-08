@@ -367,4 +367,46 @@
     0%,100% { filter: brightness(1); }
     50% { filter: brightness(1.4); }
   }
+
+  /* Contact section */
+  .contact-row {
+    border: 1px solid transparent;
+    background: oklch(0.18 0.04 265 / 0.4);
+  }
+  .contact-row:hover {
+    border-color: oklch(0.85 0.15 200 / 0.4);
+    background: oklch(0.18 0.04 265 / 0.7);
+    box-shadow: 0 0 20px -4px color-mix(in oklab, var(--cyan) 50%, transparent);
+    transform: translateX(4px);
+  }
+  .cyber-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .cyber-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    opacity: 0.85;
+  }
+  .cyber-input {
+    width: 100%;
+    padding: 0.95rem 1.1rem;
+    border-radius: 0.6rem;
+    background: linear-gradient(180deg, oklch(0.16 0.035 265 / 0.85), oklch(0.13 0.03 260 / 0.85));
+    border: 1px solid oklch(0.85 0.15 200 / 0.25);
+    color: var(--foreground);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  .cyber-input::placeholder { color: oklch(0.7 0.03 250 / 0.6); }
+  .cyber-input:focus {
+    border-color: var(--cyan);
+    box-shadow:
+      0 0 0 1px var(--cyan),
+      0 0 24px -4px color-mix(in oklab, var(--cyan) 60%, transparent),
+      inset 0 0 12px color-mix(in oklab, var(--purple) 12%, transparent);
+    transform: translateY(-1px);
+  }
+  .cyber-textarea { resize: vertical; min-height: 180px; line-height: 1.5; }
 }
