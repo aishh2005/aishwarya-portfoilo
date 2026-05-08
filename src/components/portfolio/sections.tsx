@@ -5,7 +5,7 @@ import {
   FileText, Network, ShieldCheck, Target, Brain, ExternalLink, ChevronDown,
   Award, BadgeCheck, Terminal, ShieldAlert, X,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
  import profileImg from "@/assets/profile.png";
 import shieldImg from "@/assets/shield.png";
 import certEthicalHacking from "@/assets/cert-ethical-hacking.jpg";
@@ -17,7 +17,6 @@ import eduImg from "@/assets/education.png";
 import foodImg from "@/assets/project-food.jpg";
 import aboutPortrait from "@/assets/about-cyber-portrait.png";
 import emailjs from "@emailjs/browser";
-import { useRef } from "react";
 
 const cyan = { color: "var(--cyan)" } as const;
 
