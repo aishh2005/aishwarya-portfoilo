@@ -247,7 +247,12 @@
   .caret { display: inline-block; width: 0.6ch; animation: blink 1s steps(1) infinite; color: var(--cyan); }
 
   /* Flip card */
-  .flip-card { perspective: 1200px; cursor: pointer; transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; border-radius: 0.75rem; }
+  .flip-card {
+    perspective: 1200px;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    transition: box-shadow 0.4s ease-in-out;
+  }
   .flip-card-inner {
     position: relative;
     width: 100%; height: 100%;
@@ -255,7 +260,8 @@
     transform-style: preserve-3d;
     will-change: transform;
   }
-  .flip-card:hover .flip-card-inner { transform: rotateY(-180deg); }
+  .flip-card:hover .flip-card-inner,
+  .flip-card:focus-visible .flip-card-inner { transform: rotateY(-180deg); }
   .flip-card-front, .flip-card-back {
     position: absolute; inset: 0;
     backface-visibility: hidden;
@@ -264,9 +270,13 @@
     display: flex; flex-direction: column;
     padding: 1.25rem;
     overflow: hidden;
+    transform: translateZ(0);
   }
-  .flip-card-back { transform: rotateY(180deg); }
-  .flip-card:hover { transform: scale(1.03); box-shadow: 0 0 40px color-mix(in oklab, var(--cyan) 45%, transparent); }
+  .flip-card-back {
+    transform: rotateY(180deg) translateZ(0);
+    padding: 0;
+  }
+  .flip-card:hover { box-shadow: 0 0 40px color-mix(in oklab, var(--cyan) 55%, transparent); }
 
   /* Holographic UI */
   .holo-stage { position: relative; }
