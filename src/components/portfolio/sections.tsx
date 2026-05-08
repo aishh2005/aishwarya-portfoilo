@@ -514,46 +514,83 @@ export function Projects() {
 }
 
 export function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    setStatus("sending");
+    emailjs
+      .sendForm("service_k35gk34", "template_nshnh2s", formRef.current, { publicKey: "fx3n2QaHtxPv7yX-c" })
+      .then(() => {
+        setStatus("sent");
+        formRef.current?.reset();
+        setTimeout(() => setStatus("idle"), 4000);
+      })
+      .catch(() => setStatus("error"));
+  };
+  const contactItems = [
+    { icon: Mail, label: "Email", text: "aishwaryahjuwlekar@gmail.com", href: "mailto:aishwaryahjuwlekar@gmail.com" },
+    { icon: Phone, label: "Phone", text: "+91 8421099761", href: "tel:+918421099761" },
+    { icon: MapPin, label: "Location", text: "Virar, Mumbai, Maharashtra, India" },
+    { icon: Linkedin, label: "LinkedIn", text: "linkedin.com/in/aishwarya-juwlekar", href: "https://linkedin.com/in/aishwarya-juwlekar" },
+    { icon: Github, label: "GitHub", text: "github.com/aishh2005", href: "https://github.com/aishh2005" },
+  ];
   return (
     <section className="mx-auto max-w-7xl px-6 py-12 pb-24">
       <Reveal>
         <div className="neon-card rounded-2xl p-8 md:p-10">
           <SectionTitle icon={Send} id="contact">Contact Me</SectionTitle>
-          <div className="grid lg:grid-cols-[1fr_1fr_1fr] gap-8">
-            <div>
-              <p className="text-foreground/85 leading-relaxed mb-6">
-                I'm always open to discussing cybersecurity opportunities, collaborations, or networking.
-                Let's connect and build a more secure digital world together!
-              </p>
-            </div>
-            <div className="space-y-4 text-sm">
-              {[
-                { icon: Mail, text: "aishwaryahjuwlekar@gmail.com", href: "mailto:aishwaryahjuwlekar@gmail.com" },
-                { icon: Phone, text: "+91 8421099761", href: "tel:+918421099761" },
-                { icon: MapPin, text: "Virar, Mumbai, Maharashtra, India" },
-                { icon: Linkedin, text: "linkedin.com/in/aishwarya-juwlekar", href: "https://linkedin.com/in/aishwarya-juwlekar" },
-                 { icon: Github, text: "https://github.com/aishh2005", href: "https://github.com/aishh2005" },
-              ].map((c, i) => (
-                <a key={i} href={c.href || "#"} target={c.href?.startsWith("http") ? "_blank" : undefined} rel="noopener" className="flex items-center gap-3 hover:text-cyan transition" style={{ color: "inherit" }}>
-                  <span className="w-9 h-9 rounded-md neon-border flex items-center justify-center shrink-0" style={cyan}>
-                    <c.icon className="w-4 h-4" />
+          <p className="text-foreground/85 leading-relaxed max-w-3xl mb-10">
+            I'm always open to discussing cybersecurity opportunities, collaborations, or networking.
+            Let's connect and build a more secure digital world together!
+          </p>
+          <div className="grid lg:grid-cols-[0.9fr_1.6fr] gap-10 lg:gap-14 relative">
+            {/* Glowing divider */}
+            <span aria-hidden className="hidden lg:block absolute top-0 bottom-0 left-[37%] w-px" style={{ background: "linear-gradient(180deg, transparent, var(--cyan), var(--purple), transparent)", boxShadow: "0 0 12px var(--cyan)" }} />
+            {/* LEFT — contact info */}
+            <div className="flex flex-col gap-5">
+              {contactItems.map((c) => (
+                <a
+                  key={c.label}
+                  href={c.href || "#"}
+                  target={c.href?.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener"
+                  className="contact-row group flex items-center gap-4 p-3 rounded-lg transition-all duration-300"
+                >
+                  <span className="w-11 h-11 rounded-md neon-border flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110" style={cyan}>
+                    <c.icon className="w-5 h-5" />
                   </span>
-                  <span className="break-all">{c.text}</span>
+                  <div className="min-w-0">
+                    <div className="font-display text-[10px] tracking-[0.25em]" style={{ color: "var(--purple)" }}>{c.label}</div>
+                    <div className="text-sm text-foreground/90 break-all">{c.text}</div>
+                  </div>
                 </a>
               ))}
             </div>
-            <form
-              onSubmit={(e) => { e.preventDefault(); alert("Thanks! Your message has been queued."); }}
-              className="space-y-3"
-            >
-              <div className="grid grid-cols-2 gap-3">
-                <input required placeholder="Your Name" className="bg-input/40 border border-border focus:border-cyan rounded-md px-3 py-2 text-sm outline-none transition" style={{ borderColor: "var(--border)" }} />
-                <input required type="email" placeholder="Your Email" className="bg-input/40 border border-border focus:border-cyan rounded-md px-3 py-2 text-sm outline-none transition" />
+            {/* RIGHT — form */}
+            <form ref={formRef} onSubmit={onSubmit} className="cyber-form space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div className="cyber-field">
+                  <label className="cyber-label">Name</label>
+                  <input required name="from_name" placeholder="Your Name" className="cyber-input" />
+                </div>
+                <div className="cyber-field">
+                  <label className="cyber-label">Email</label>
+                  <input required type="email" name="from_email" placeholder="you@example.com" className="cyber-input" />
+                </div>
               </div>
-              <textarea required placeholder="Your Message" rows={5} className="w-full bg-input/40 border border-border focus:border-cyan rounded-md px-3 py-2 text-sm outline-none transition" />
-              <button type="submit" className="btn-neon w-full justify-center">
-                Contact Me <Send className="w-4 h-4" />
+              <div className="cyber-field">
+                <label className="cyber-label">Message</label>
+                <textarea required name="message" placeholder="Tell me about your project or just say hi..." rows={8} className="cyber-input cyber-textarea" />
+              </div>
+              <button type="submit" disabled={status === "sending"} className="btn-neon w-full justify-center text-base py-4">
+                {status === "sending" ? "Sending..." : status === "sent" ? "Message Sent ✓" : "Contact Me"}
+                <Send className="w-4 h-4" />
               </button>
+              {status === "error" && (
+                <p className="text-xs text-center" style={{ color: "var(--destructive)" }}>Failed to send. Please try again or email directly.</p>
+              )}
             </form>
           </div>
           <div className="mt-10 pt-6 border-t border-border text-center text-xs text-muted-foreground">
