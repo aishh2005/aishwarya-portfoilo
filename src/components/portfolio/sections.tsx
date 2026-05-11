@@ -526,6 +526,7 @@ export function Contact() {
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
       time: new Date().toLocaleString(),
     };
+    console.log("[EmailJS] sending params:", params);
     emailjs
       .send("service_k35gk34", "template_nshnh2s", params, { publicKey: "fx3n2QaHtxPv7yX-c" })
       .then(() => {
