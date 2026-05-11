@@ -520,13 +520,18 @@ export function Contact() {
     if (!formRef.current) return;
     setStatus("sending");
     const form = formRef.current;
+    const fromName = (form.elements.namedItem("from_name") as HTMLInputElement).value;
+    const fromEmail = (form.elements.namedItem("from_email") as HTMLInputElement).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+    const time = new Date().toLocaleString();
     const params = {
-      from_name: (form.elements.namedItem("from_name") as HTMLInputElement).value,
-      from_email: (form.elements.namedItem("from_email") as HTMLInputElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-      time: new Date().toLocaleString(),
+      from_name: fromName,
+      from_email: fromEmail,
+      name: fromName,
+      email: fromEmail,
+      message,
+      time,
     };
-    console.log("[EmailJS] sending params:", params);
     emailjs
       .send("service_k35gk34", "template_nshnh2s", params, { publicKey: "fx3n2QaHtxPv7yX-c" })
       .then(() => {
