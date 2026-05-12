@@ -61,7 +61,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl w-full px-6 grid lg:grid-cols-[320px_1fr_300px] gap-8 items-center">
+      <div className="relative mx-auto max-w-6xl w-full px-6 grid lg:grid-cols-[300px_1fr_260px] gap-6 items-center justify-items-center">
         {/* Profile frame */}
         <Reveal>
           <div className="relative mx-auto w-full" style={{ maxWidth: 320 }}>
@@ -165,9 +165,9 @@ export function About() {
       <Reveal>
         <div className="neon-card rounded-2xl p-8 md:p-10">
           <SectionTitle icon={User} id="about">About Me</SectionTitle>
-          <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
+          <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
             <div>
-              <div className="space-y-4 text-foreground/85 leading-relaxed">
+              <div className="space-y-3 text-foreground/85 leading-relaxed">
             <p>
               I am a recent B.Sc. Information Technology graduate with a strong passion for
               cybersecurity and networking. My journey in tech is driven by curiosity about how
@@ -188,8 +188,8 @@ export function About() {
             </div>
 
             {/* Personal cyber portrait */}
-            <div className="relative hidden md:block">
-              <div className="relative aspect-square max-w-md mx-auto holo-stage">
+            <div className="relative hidden md:block self-center">
+              <div className="relative aspect-square max-w-sm mx-auto holo-stage">
                 <div className="holo-aura" aria-hidden />
                 <div className="holo-ring holo-ring-1" aria-hidden />
                 <div className="holo-ring holo-ring-2" aria-hidden />
@@ -211,7 +211,7 @@ export function About() {
             </div>
           </div>
           {/* Highlights row at bottom */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
             {highlights.map((h) => (
               <div key={h.title} className="neon-card rounded-lg p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-md flex items-center justify-center shrink-0" style={{ background: "oklch(0.85 0.15 200 / 0.1)", color: "var(--cyan)" }}>
@@ -241,7 +241,7 @@ export function Education() {
       <Reveal>
         <div className="neon-card rounded-2xl p-8 md:p-10">
           <SectionTitle icon={GraduationCap} id="education">Education</SectionTitle>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((it, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div className="edu-card neon-card rounded-xl p-6 h-full flex flex-col gap-3 transition-all duration-300 hover:scale-[1.02]">
