@@ -32,11 +32,15 @@ export const Route = createRootRoute({
       { title: "Aishwarya Hemant Juwlekar — Cybersecurity & Networking" },
       { name: "description", content: "Portfolio of Aishwarya Hemant Juwlekar — Cybersecurity & Networking enthusiast. Defending systems, securing connections." },
       { name: "author", content: "Aishwarya Hemant Juwlekar" },
-      { property: "og:title", content: "Aishwarya Hemant Juwlekar — Cybersecurity Portfolio" },
-      { property: "og:description", content: "Defending systems. Securing connections." },
+      { property: "og:title", content: "Aishwarya Hemant Juwlekar — Cybersecurity & Networking" },
+      { property: "og:description", content: "Portfolio of Aishwarya Hemant Juwlekar — Cybersecurity & Networking enthusiast. Defending systems, securing connections." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Aishwarya Hemant Juwlekar — Cybersecurity & Networking" },
+      { name: "twitter:description", content: "Portfolio of Aishwarya Hemant Juwlekar — Cybersecurity & Networking enthusiast. Defending systems, securing connections." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/7fa5fd9e-96cf-4a72-a3e5-6c02677c3cb9" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/7fa5fd9e-96cf-4a72-a3e5-6c02677c3cb9" },
     ],
     links: [
       {
