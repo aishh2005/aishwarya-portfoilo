@@ -80,9 +80,7 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <div className="flex items-center gap-3 mb-3 justify-center lg:justify-start">
               <span className="text-foreground/80 text-base md:text-lg italic">Hi, I'm</span>
-              <span className="h-px w-24 md:w-32" style={{ background: "linear-gradient(90deg, var(--cyan), var(--purple), transparent)", boxShadow: "0 0 8px var(--cyan)" }} />
-              <Shield className="w-3.5 h-3.5" style={cyan} />
-              <span className="h-px w-12" style={{ background: "linear-gradient(90deg, var(--purple), transparent)" }} />
+              <span className="h-px w-16" style={{ background: "linear-gradient(90deg, var(--cyan), transparent)" }} />
             </div>
             <p className="tracking-[0.25em] text-foreground/90 text-sm md:text-base mb-4 font-display">
               AISHWARYA HEMANT JUWLEKAR
@@ -105,12 +103,12 @@ export function Hero() {
               <span style={cyan}>DEFENDING SYSTEMS.</span>{" "}
               <span style={{ color: "var(--purple)" }}>SECURING CONNECTIONS.</span>
             </p>
-            <p className="text-foreground/80 max-w-xl leading-relaxed mb-6 mx-auto lg:mx-0 text-sm md:text-base">
+            <p className="text-foreground/80 max-w-xl leading-relaxed mb-8 mx-auto lg:mx-0 text-sm md:text-base">
               Focused on protecting digital assets and building secure network infrastructures.
               Driven by curiosity and guided by a strong passion for cybersecurity and threat detection.
             </p>
 
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center lg:justify-start mb-6">
               <a href="#contact" className="btn-neon">
                 <User className="w-4 h-4" /> Contact Me
               </a>
