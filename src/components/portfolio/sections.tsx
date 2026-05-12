@@ -35,7 +35,7 @@ function SectionTitle({ icon: Icon, children, id }: { icon: any; children: React
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-screen pt-24 pb-20 overflow-hidden">
+    <section id="home" className="relative min-h-[100svh] pt-20 pb-12 overflow-hidden flex items-center">
       {/* Backgrounds */}
       <div className="absolute inset-0 grid-bg opacity-60" aria-hidden />
       <div className="absolute inset-0 pointer-events-none" aria-hidden style={{
@@ -61,10 +61,10 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[400px_1fr_360px] gap-10 items-center">
+      <div className="relative mx-auto max-w-7xl w-full px-6 grid lg:grid-cols-[320px_1fr_300px] gap-8 items-center">
         {/* Profile frame */}
         <Reveal>
-          <div className="relative mx-auto w-full" style={{ maxWidth: 380 }}>
+          <div className="relative mx-auto w-full" style={{ maxWidth: 320 }}>
             <div className="hud-frame relative overflow-hidden">
               <span className="hud-corner-tr" />
               <span className="hud-corner-bl" />
@@ -80,30 +80,32 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <div className="flex items-center gap-3 mb-3 justify-center lg:justify-start">
               <span className="text-foreground/80 text-base md:text-lg italic">Hi, I'm</span>
-              <span className="h-px w-16" style={{ background: "linear-gradient(90deg, var(--cyan), transparent)" }} />
+              <span className="h-px w-24 md:w-32" style={{ background: "linear-gradient(90deg, var(--cyan), var(--purple), transparent)", boxShadow: "0 0 8px var(--cyan)" }} />
+              <Shield className="w-3.5 h-3.5" style={cyan} />
+              <span className="h-px w-12" style={{ background: "linear-gradient(90deg, var(--purple), transparent)" }} />
             </div>
-            <p className="tracking-[0.25em] text-foreground/90 text-sm md:text-base mb-5 font-display">
+            <p className="tracking-[0.25em] text-foreground/90 text-sm md:text-base mb-4 font-display">
               AISHWARYA HEMANT JUWLEKAR
             </p>
 
-             <h1 className="font-display md:text-6xl lg:text-7xl font-extrabold leading-[1.02] mb-1 text-gradient glow-text text-5xl">
+             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.02] mb-1 text-gradient glow-text">
                CYBER SECURITY &
              </h1>
-             <h1 className="font-display md:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-gradient glow-text text-5xl">
+             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.02] text-gradient glow-text">
                NETWORKING
             </h1>
 
-            <div className="flex items-center gap-3 my-6 justify-center lg:justify-start">
+            <div className="flex items-center gap-3 my-4 justify-center lg:justify-start">
               <span className="h-px flex-1 max-w-[140px]" style={{ background: "linear-gradient(90deg, transparent, var(--cyan))" }} />
               <Shield className="w-4 h-4" style={cyan} />
               <span className="h-px flex-1 max-w-[140px]" style={{ background: "linear-gradient(90deg, var(--purple), transparent)" }} />
             </div>
 
-            <p className="font-display tracking-[0.25em] text-sm md:text-base mb-5">
+            <p className="font-display tracking-[0.25em] text-xs md:text-sm mb-4">
               <span style={cyan}>DEFENDING SYSTEMS.</span>{" "}
               <span style={{ color: "var(--purple)" }}>SECURING CONNECTIONS.</span>
             </p>
-            <p className="text-foreground/80 max-w-xl leading-relaxed mb-8 mx-auto lg:mx-0">
+            <p className="text-foreground/80 max-w-xl leading-relaxed mb-6 mx-auto lg:mx-0 text-sm md:text-base">
               Focused on protecting digital assets and building secure network infrastructures.
               Driven by curiosity and guided by a strong passion for cybersecurity and threat detection.
             </p>
@@ -145,7 +147,7 @@ export function Hero() {
         </Reveal>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce" style={cyan}>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce" style={cyan}>
         <ChevronDown className="w-5 h-5" />
         <span className="font-display text-xs tracking-[0.3em]">SCROLL DOWN</span>
       </div>
@@ -198,7 +200,7 @@ export function About() {
                 <img
                   src={aboutPortrait}
                   alt="Cyber portrait of Aishwarya"
-                  loading="lazy"
+                  loading="eager"
                   width={896}
                   height={1024}
                   className="floaty relative z-10 w-[88%] h-auto mx-auto block drop-shadow-[0_0_30px_var(--cyan)]"
