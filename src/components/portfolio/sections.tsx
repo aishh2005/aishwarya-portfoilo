@@ -61,10 +61,10 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-6xl w-full px-6 grid lg:grid-cols-[300px_1fr_260px] gap-6 items-center justify-items-center">
+      <div className="relative mx-auto max-w-7xl w-full px-6 grid lg:grid-cols-[320px_1fr_300px] gap-8 items-center">
         {/* Profile frame */}
         <Reveal>
-          <div className="relative mx-auto w-full" style={{ maxWidth: 320 }}>
+          <div className="relative mx-auto w-full" style={{ maxWidth: 360 }}>
             <div className="hud-frame relative overflow-hidden">
               <span className="hud-corner-tr" />
               <span className="hud-corner-bl" />
@@ -241,9 +241,9 @@ export function Education() {
       <Reveal>
         <div className="neon-card rounded-2xl p-8 md:p-10">
           <SectionTitle icon={GraduationCap} id="education">Education</SectionTitle>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             {items.map((it, i) => (
-              <Reveal key={i} delay={i * 100}>
+              <Reveal key={i} delay={i * 100} className={i === items.length - 1 ? "sm:col-span-2 sm:max-w-[calc(50%-12px)] sm:mx-auto sm:w-full" : ""}>
                 <div className="edu-card neon-card rounded-xl p-6 h-full flex flex-col gap-3 transition-all duration-300 hover:scale-[1.02]">
                   <div className="flex items-center justify-between">
                     <span className="font-display text-sm px-3 py-1 rounded-full neon-border" style={cyan}>{it.year}</span>
