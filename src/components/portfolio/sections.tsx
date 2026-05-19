@@ -86,11 +86,9 @@ export function Hero() {
               AISHWARYA HEMANT JUWLEKAR
             </p>
 
-             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.02] mb-1 text-gradient glow-text">
-               CYBER SECURITY &
-             </h1>
              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.02] text-gradient glow-text">
-               NETWORKING
+               <span className="block mb-1">CYBER SECURITY &amp;</span>
+               <span className="block">NETWORKING</span>
             </h1>
 
             <div className="flex items-center gap-3 my-4 justify-center lg:justify-start">
