@@ -7,10 +7,27 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aishwarya Hemant Juwlekar — Cybersecurity & Networking Portfolio" },
+      { title: "Aishwarya Hemant Juwlekar — Cybersecurity Portfolio" },
       { name: "description", content: "Cybersecurity & Networking enthusiast. B.Sc. IT graduate specializing in threat detection, penetration testing, and secure web development." },
       { property: "og:title", content: "Aishwarya Hemant Juwlekar — Cybersecurity Portfolio" },
       { property: "og:description", content: "Defending systems. Securing connections." },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Aishwarya Hemant Juwlekar",
+          jobTitle: "Cybersecurity & Networking Specialist",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Mumbai",
+            addressCountry: "India",
+          },
+          url: "https://aishwarya-portfoilo.lovable.app",
+        }),
+      },
     ],
   }),
   component: Index,
