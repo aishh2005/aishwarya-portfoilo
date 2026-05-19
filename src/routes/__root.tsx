@@ -29,6 +29,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "4d2IYQ58Bk5PUrsCihb1tE9S8lXuSkD6cn9C97UbkuI" },
       { title: "Aishwarya Hemant Juwlekar — Cybersecurity Portfolio" },
       { name: "description", content: "Portfolio of Aishwarya Hemant Juwlekar — Cybersecurity & Networking enthusiast. Defending systems, securing connections." },
       { name: "author", content: "Aishwarya Hemant Juwlekar" },
